@@ -13,5 +13,6 @@ def get_page(url):
 if __name__=='__main__':
 
   url = 'http://www.yahoo.com'
-  print(get_page(url))
+  url1 = 'http://sfbay.craigslist.org/search/apa'
+  print(get_page(url1))
 

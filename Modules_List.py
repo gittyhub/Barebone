@@ -1,6 +1,7 @@
 import urllib
 import re
 from urllib.request import urlopen
+from sys import argv
 
 #--------gets the page-------
 def get_page(url):
@@ -26,6 +27,32 @@ def get_AllLinks1(x,q): #x is the site, and q is the date
     else:
       continue
   return index_site
+
+
+#--------------gets all links for appartment 
+def get_All_AppLinks(x):
+  index_site = [] #<< creates an empty list
+  Find_All_App_Listing = re.findall('[a-z]*/[a-z]*/[0-9]*.html', x) #<< x is the var where the main page of app is, not the webite 
+  for a in Find_All_App_Listing:
+    #job =  'http://sfbay.craigslist.com'+Find_All_App_Listing.group() #attachs the http start to the link completing the hyperlink 
+    job =  'http://sfbay.craigslist.com'+'/'+a #attachs the http start to the link completing the hyperlink 
+    if job in index_site:
+      continue;
+    else:
+      index_site.append(job)
+  return index_site
+
+#--------------Writes list to a file
+def write_list_to_file(x):
+  f = open('List2File', 'w')
+  for i in x:
+    f.write(i+'\n')
+  f.close() 
+
+#--------------Append each site to a file
+
+
+
 
 #-----------from all the links, find $ amount, sort and display link--------------------------
 def find_n_sort_monies(l,q):
