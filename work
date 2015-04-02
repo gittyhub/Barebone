@@ -1,8 +1,0 @@
-lines 1
-lines2
-
-f = open('work','w')
-f.readlines()
-f.readline()
-f.write()
-
